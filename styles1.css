@@ -1,7 +1,7 @@
 body {
   margin: 0;
   height: 100vh;
-  background: white;
+  background:linear-gradient(45deg, #ffcc00, #ff6699);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   overflow: hidden;
@@ -85,87 +85,259 @@ nav {
 .menu--fade-out {
   animation: fadeToRight 0.3s ease-in-out;
 }
-.carousel {
+#profile-card1, #profile-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  animation: slideInUp 1s ease-in;
+}
+
+#profile-card1 img, #profile-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 25px;
+  margin-right: 20px;
+  animation: bounceIn 1s ease-in;
+}
+
+.profile-details {
+  flex: 1;
+}
+
+#profile-card1 h2, #profile-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  animation: slideInRight 1s ease-in;
+}
+
+/* Style education list */
+.profile-details p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  animation: slideInLeft 1s ease-in;
+}
+
+.profile-details li {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  animation: slideInLeft 1s ease-in;
+}
+
+/* Style skill images */
+.profile-details img {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  animation: fadeIn 1s ease-in;
+}
+.background {
+  background-color: var(--background);
+  display: grid;
+  place-items: center;
+  max-height: 200px;
+}
+
+.social-media-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  list-style: none;
+}
+
+.social-media-buttons li {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: grid;
+  background-color: var(--primary-color);
+  place-items: center;
+  transition: all 0.3s;
+  border: 1px solid var(--primary-color);
+}
+
+.social-media-buttons li a {
+  display: grid;
+  place-items: center;
+  width: 100%;
   height: 100%;
+  color: var(--secondary-color);
 }
 
-.carousel {
-  overflow: hidden;
+.social-media-buttons li:hover {
+  background-color: var(--secondary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.social-media-buttons li a svg {
+  height: 24px;
+  width: 24px;
+  stroke: var(--secondary-color);
+  stroke-width: 1.75;
+  transition: 0.8s;
+}
+
+.social-media-buttons li:hover svg {
+  stroke: var(--primary-color);
+  transform: rotateY(360deg);
+  stroke-width: 1.75;
+}
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  animation: slideInUp 1s ease-in;
+}
+
+/* Set footer font size */
+footer p {
+  font-size: 0.8rem;
+}
+@media screen and (max-width: 768px) {
+  nav {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  nav img {
+      margin: 10px 0;
+  }
+
+  #profile-card1, #profile-card {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  #profile-card1 img, #profile-card img {
+      margin: 20px auto;
+  }
+
+  #profile-card1 h2, #profile-card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+  }
+
+  .profile-details p, .profile-details li {
+      font-size: 1rem;
+  }
+
+  .profile-details img {
+      width: 30px;
+      height: 30px;
+  }
+  footer p {
+      font-size: 0.7rem;
+  }
+}
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
   position: relative;
+  max-height: 800PX;
+  margin: auto;
+  /* Add a linear gradient background */
+}
+/* Responsive styles using media queries */
+@media (max-width: 768px) {
+  /* Adjust the styles for screens smaller than 768px wide */
+  .slideshow-container {
+    max-width: 80%; /* Reduce the max-width for smaller screens */
+  }
+}
+.slideshow-container img {
   width: 100%;
+  height: auto;
 }
 
-.carousel-images {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  display: flex;
-  width: 100%;
-  height: 90%;
-  transition: 0.5s;
-}
-
-.carousel img {
-  width: 100%;
-  object-fit: cover;
-}
-
-.carousel-controls {
-  position: absolute;
-  z-index: 2;
-  width: 100%;
-  height: 300px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-
-input {
+/* Make the images invisible by default */
+.Containers {
   display: none;
 }
 
-input,
-label {
-  position: relative;
-  z-index: 2;
-}
-
-label {
-  display: block;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: rgba(2, 23, 255, 0.5);
-  backdrop-filter: blur(20px);
+/* forward & Back buttons */
+.Back, .forward {
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.dots {
   position: absolute;
-  z-index: 2;
-  left: 0;
-  bottom: 0;
+  top: 48%;
+  width: auto;
+  margin-top: -23px;
+  padding: 17px;
+  color: grey;
+  font-weight: bold;
+  font-size: 19px;
+  transition: 0.4s ease;
+  border-radius: 0 5px 5px 0;
+  user-select: none;
+}
+
+/* Place the "forward button" to the right */
+.forward {
+  right: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+/*when the user hovers,add a black background with some little opacity */
+.Back:hover, .forward:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption Info */
+.Info {
+  color: #e3e3e3;
+  font-size: 16px;
+  padding: 10px 14px;
+  position: absolute;
+  bottom: 10px;
   width: 100%;
-  height: 400px;
-  display: flex;
-  gap: 12px;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 50px;
+  text-align: center;
 }
 
-input:nth-child(1):checked ~ .dots label:nth-child(1),
-input:nth-child(2):checked ~ .dots label:nth-child(2){
-  backdrop-filter: none;
+/* Worknumbering (1/3 etc) */
+.MessageInfo {
+  color: #f2f2f3;
+  font-size: 14px;
+  padding: 10px 14px;
+  position: absolute;
+  top: 0;
 }
 
-input:nth-child(1):checked ~ .carousel-images {
-  translate: 0;
+/* The circles or bullets and indicators */
+.dots {
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  margin: 0 3px;
+  background-color: #acc;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.5s ease;
 }
 
-input:nth-child(2):checked ~ .carousel-images {
-  translate: -100vw;
+.enable, .dots:hover {
+  background-color: #717161;
 }
 
+/* Faint animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.4s;
+  animation-name: fade;
+  animation-duration: 1.4s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .5}
+  to {opacity: 2}
+}
+
+@keyframes fade {
+  from {opacity: .5}
+  to {opacity: 2}
+}
